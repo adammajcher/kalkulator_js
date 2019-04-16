@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Prosty kalkulator</h1>
+<form style="display: inline">
+	<input type="number" step="0.01" id="liczba1">
+	<select id="dzialanie">
+	<option value ="dodawanie">+</option>
+	<option value ="odejmowanie">-</option>
+	<option value ="mnozenie">*</option>
+	</select> 
+	<input type="number" step="0.01" id="liczba2">
+	<button type="button" onclick="myFunction()"> = </button>
+	<p style="display: inline" id="wynik"></p>
+</form>
+
+
+<p id="komunikat"></p>
+
+
+<script>
+function myFunction() { 
+	document.getElementById("wynik").innerHTML = "";
+	document.getElementById("komunikat").innerHTML = "";
+	var liczba1 = parseFloat(document.getElementById("liczba1").value);
+	var liczba2 = parseFloat(document.getElementById("liczba2").value);
+	if(!isNaN(liczba1) && !isNaN(liczba2)){
+		var wybor = document.getElementById("dzialanie").value;
+		var w = 0.00;
+		switch (wybor){
+			case "dodawanie": 
+				w = liczba1 + liczba2;
+				break;
+			case "odejmowanie": 
+				w = liczba1 - liczba2;
+				break;
+			case "mnozenie": 
+				w = liczba1 * liczba2;
+				break;
+		}
+		document.getElementById("wynik").innerHTML = w.toString();
+	} else {
+		document.getElementById("komunikat").innerHTML = "Coś poszło nie tak.";
+	}
+}
+</script>
+
+</body>
+</html>
